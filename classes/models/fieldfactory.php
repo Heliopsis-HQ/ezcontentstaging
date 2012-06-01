@@ -50,7 +50,7 @@ class eZContentStagingFieldFactory
         {
             try{
                 return call_user_func_array( array( $class, 'decodeValue' ),
-                                      array( $attribute, $locale, $ridGenerator ) );
+                                      array( $attribute, $value ) );
             }
             catch( Exception $e )
             {
