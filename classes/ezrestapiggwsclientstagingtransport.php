@@ -603,7 +603,7 @@ class eZRestApiGGWSClientStagingTransport extends eZBaseStagingTransport impleme
             else if ( $fieldFilter === true || $fieldFilter->accept( $attribute ) )
             {
                 $name = $attribute->attribute( 'contentclass_attribute_identifier' );
-                $out['fields'][$name] = (array) new eZContentStagingField( $attribute, $locale, $ridGenerator );
+                $out['fields'][$name] = (array) eZContentStagingFieldFactory::getField( $attribute, $locale, $ridGenerator );
             }
         }
 

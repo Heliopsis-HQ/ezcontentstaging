@@ -73,7 +73,7 @@ class eZContentStagingContent extends contentStagingBase
             $type = $attr->attribute( 'data_type_string' );
             if ( $attr->attribute( 'has_content' ) || $type == 'ezsrrating' || $type == 'ezuser' )
             {
-                $this->fields[$identifier] = (array) new eZContentStagingField( $attr, $attr->attribute( 'language_code' ), null );
+                $this->fields[$identifier] = (array) eZContentStagingFieldFactory::getField( $attr, $attr->attribute( 'language_code' ), null );
             }
         }
     }
@@ -170,7 +170,7 @@ class eZContentStagingContent extends contentStagingBase
             {
                 throw new Exception( "Missing value for field '$identifier'" );
             }
-            eZContentStagingField::decodeValue( $attribute, $fields[$identifier]['value'] );
+            eZContentStagingFieldFactory::decodeValue( $attribute, $fields[$identifier]['value'] );
             if ( $required && !$attribute->attribute( 'has_content' ) )
             {
                 throw new Exception( "Required attribute '$identifier' does not have a value" );
